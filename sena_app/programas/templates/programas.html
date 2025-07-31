@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instructores</title>
+    <title>Programas</title>
     
     <style>
         body{
@@ -76,35 +76,35 @@
 <body>
     <nav>
         <img src="https://www.thearchipielagopress.co/wp-content/uploads/2020/10/sena-1800.jpg" alt="" class="sena-img">
-        <div><h1 class="titulo-nav">Instructores</h1></div>
+        <div><h1 class="titulo-nav">Programas</h1></div>
     </nav>
     <table border="1" cellspacing="0" cellpadding="7">
-        <caption>Instructores del centro minero</caption>
+        <caption>Programas del centro minero</caption>
         <thead>
             <tr>
-                <th>Tipo de documento</th>
-                <th>Documento de identidad</th>
-                <th>Nombres</th>
-                <th>Apellidos</th>
-                <th>Telefono</th>
-                <th>Correo</th>
-                <th>Ciudad</th>
-                <th>Nivel educativo</th>
-                <th>especialidad</th>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Nivel de formación</th>
+                <th>Modalidad</th>
+                <th>Duración en meses</th>
+                <th>Duración en horas</th>
+                <th>Regional</th>
+                <th>Centro de formación</th>
+                <th>Estado</th>
             </tr>
         </thead>
         <tbody>
-            {% for i in instructores %}
+            {% for i in programas %}
             <tr>
-                <td>{{ i.tipo_documento }}</td>
-                <td>{{ i.documento_identidad }}</td>
+                <td>{{ i.codigo }}</td>
                 <td>{{ i.nombre }}</td>
-                <td>{{ i.apellido }}</td>
-                <td>{{ i.telefono }}</td>
-                <td>{{ i.correo }}</td>
-                <td>{{ i.ciudad }}</td>
-                <td>{{ i.nivel_educativo }}</td>
-                <td>{{ i.especialidad }}</td>
+                <td>{{ i.nivel_formacion }}</td>
+                <td>{{ i.modalidad }}</td>
+                <td>{{ i.duracion_meses }}</td>
+                <td>{{ i.duracion_horas }}</td>
+                <td>{{ i.regional }}</td>
+                <td>{{ i.centro_formacion }}</td>
+                <td>{{ i.estado }}</td>
             </tr>
             {% endfor %}
         </tbody>
