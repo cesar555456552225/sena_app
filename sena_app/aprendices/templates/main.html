@@ -84,6 +84,39 @@ section img {
     border-radius: 10px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
+.boton-aparte {
+    width: 400px;
+    height: 200px;
+    margin: 50px auto; 
+    background-color: #D6D3D1;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boton-lista-cursos {
+    background-color: #00b36b;
+    color: white;
+    font-size: 18px;
+    width: 220px;
+    height: 50px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: 'Segoe UI', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: 0.3s ease-in-out;
+}
+
+.boton-lista-cursos:hover {
+    background: linear-gradient(135deg, #00c779, #009d5b);
+    transform: scale(1.05);
+}
+
+
 </style>
 <body>
     <nav>
@@ -96,6 +129,10 @@ section img {
         <a href="instructores"><button>Instructores</button></a>
         <a href="programas"><button>Programas</button></a>
         <a href="admin"><button style="background-color: #A1A1A1;">Panel administrativo</button></a>
+    </div>
+
+    <div class="boton-aparte">
+        <a href="/lista_cursos/"><button class="boton-lista-cursos">Lista de cursos</button></a>
     </div>
     <section>
         <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhova8P0K6cX9ME8PNeEx3QJ8qI4VluTcRQ7JHdO0oaGCwW8ieBYiydUEK0F3XVy_S5VnNHWd24ItEhsfBQ87jNdHJEBfQRmJPLvZ7kJ7_NK97WCZlEWvi8b9u9qlPVvDG89kVSkIV4t23Y/s320/IMG_1598.JPG" alt="">

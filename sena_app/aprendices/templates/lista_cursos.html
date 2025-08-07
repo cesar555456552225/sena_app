@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aprendices</title>
+    <title>Cursos</title>
     <style>
         body{
             padding: 0;
@@ -76,33 +76,37 @@
 <body>
     <nav>
         <img src="https://www.thearchipielagopress.co/wp-content/uploads/2020/10/sena-1800.jpg" alt="" class="sena-img">
-        <div><h1 class="titulo-nav">Aprendices</h1></div>
+        <div><h1 class="titulo-nav">Cursos</h1></div>
     </nav>
     <table border="1" cellspacing="0" cellpadding="7">
-        <caption>Aprendices del centro minero</caption>
+        <caption>Cursos del centro minero</caption>
         <thead>
             <tr>
-                <th>Documento de identidad</th>
-                <th>Nombres</th>
-                <th>Apellidos</th>
-                <th>Telefono</th>
-                <th>Correo</th>
-                <th>Fecha de nacimiento</th>
-                <th>Ciudad</th>
-                <th>Programa de formación</th>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Programa</th>
+                <th>Instructor</th>
+                <th>Fecha inicio</th>
+                <th>Fecha fin</th>
+                <th>Aula</th>
+                <th>Estado</th>
+                <th>Observaciones</th>
+                <th>Fecha de registro</th>
             </tr>
         </thead>
         <tbody>
-            {% for i in aprendices %}
+            {% for i in lista_cursos %}
             <tr>
-                <td>{{ i.documento_identidad }}</td>
-                <td><a href="/aprendices/aprendiz/{{ i.id }}"><strong>{{ i.nombres }}</strong></a></td>
-                <td>{{ i.apellido }}</td>
-                <td>{{ i.telefono }}</td>
-                <td>{{ i.correo }}</td>
-                <td>{{ i.fecha_nacimiento }}</td>
-                <td>{{ i.ciudad }}</td>
-                <td>{{ i.programa}}</td>
+                <td><a href="/lista_cursos/curso/{{ i.id }}"><strong>{{ i.codigo }}</strong></a></td>
+                <td>{{ i.nombre }}</td>
+                <td>{{ i.programa }}</td>
+                <td>{{ i.instructor_coordinador }}</td>
+                <td>{{ i.fecha_inicio|date:"d/m/y" }}</td>
+                <td>{{ i.fecha_fin|date:"d/m/y" }}</td>
+                <td>{{ i.aula }}</td>
+                <td>{{ i.estado }}</td>
+                <td>{{ i.observaciones }}</td>
+                <td>{{ i.fecha_registro }}</td>
             </tr>
             {% endfor %}
         </tbody>

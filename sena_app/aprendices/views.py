@@ -49,7 +49,8 @@ def lista_cursos (request):
 
 def detalle_curso(request, curso_id):
     curso = get_object_or_404(Curso, id=curso_id)
-    aprendices_curso = curso.instructorcurso_set.all()
+    aprendices_curso = curso.aprendizcurso_set.all()
+    instructores_curso = curso.instructorcurso_set.all()
     template = loader.get_template('detalle_curso.html')
 
     context = {
@@ -62,7 +63,7 @@ def detalle_curso(request, curso_id):
 
 def detalle_aprendiz (request, aprendiz_id):
     aprendiz = get_object_or_404(Aprendiz, id= aprendiz_id)
-    template = loader.get-template('detalle_aprendiz.html')
+    template = loader.get_template('detalle_aprendiz.html')
 
     context = {
         'aprendiz': aprendiz,
