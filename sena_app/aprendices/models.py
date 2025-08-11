@@ -58,6 +58,8 @@ class Curso(models.Model):
             return (self.aprendices.count() / self.cupos_maximos) * 100
         return 0
     
+    def __str__(self):
+        return f"{self.nombre}"
 
 class InstructorCurso(models.Model):
     instructor = models.ForeignKey('instructores.Instructor', on_delete=models.CASCADE)
@@ -65,13 +67,13 @@ class InstructorCurso(models.Model):
     rol = models.CharField(max_length=100, verbose_name="Rol en el curso")
     fecha_asignacion = models.DateField(auto_now_add=True, verbose_name="Fecha de asignación")
 
+    def __str__(self):
+        return f"{self.instructor} - {self.curso} ({self.rol})"
+
     class Meta:
         verbose_name = "Instructor por curso"
         verbose_name_plural = "Instructores por curso"
         unique_together = ['instructor', 'curso']
-        
-        def __str__(self):
-            return f"{self.instructor} - {self.curso} ({self.rol})"
 
 class AprendizCurso(models.Model):
     ESTADO_CHOICES = [
@@ -89,10 +91,10 @@ class AprendizCurso(models.Model):
     nota_final = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True, verbose_name="Nota final")
     observaciones = models.TextField(blank=True, null=True, verbose_name="Observaciones")
 
+    def __str__(self):
+        return f"{self.aprendiz} - {self.curso} ({self.estado})"
+    
     class Meta:
         verbose_name= "Aprendiz por curso"
         verbose_name_plural = "Aprendices por curso"
         unique_together = ['aprendiz','curso']
-
-        def __str__(self):
-            return f"{self.aprendiz} - {self.curso} ({self.estado})"
