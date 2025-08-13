@@ -4,6 +4,8 @@ from .models import Aprendiz, Curso
 from instructores.models import Instructor
 from programas.models import Programa
 from django.shortcuts import get_object_or_404
+from .forms import AprendizForm
+from django.views import generic
 
 def aprendices(request):
     lista_aprendices = Aprendiz.objects.all()
@@ -70,3 +72,12 @@ def detalle_aprendiz (request, aprendiz_id):
     }
 
     return HttpResponse(template.render(context, request))
+
+class AprendizForm(generic.FormView):
+    template_name = "agregar_aprendiz.html"
+    form_class = AprendizForm
+    suscess_url = '../aprendices/'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
