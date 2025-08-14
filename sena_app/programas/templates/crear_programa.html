@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo Instructor - SENA</title>
+    <title>Crear Programa - SENA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #0066a6;
+            --primary: #cc6600;
             --secondary: #ff8c00;
             --light: #f8f9fa;
             --dark: #343a40;
@@ -37,7 +37,7 @@
         }
 
         nav {
-            background: linear-gradient(90deg, var(--primary) 0%, #004d80 100%);
+            background-color:#ff8c00; 
             display: flex;
             align-items: center;
             padding: 15px 30px;
@@ -123,6 +123,7 @@
         .form-group {
             flex: 1;
             min-width: 250px;
+            margin-bottom: 15px;
         }
 
         label {
@@ -238,8 +239,6 @@
             color: var(--danger);
             font-weight: bold;
         }
-
-        /* Validación visual */
         .is-invalid {
             border-color: var(--danger);
             background-color: rgba(220, 53, 69, 0.05);
@@ -295,176 +294,192 @@
 
     <nav>
         <img src="https://www.thearchipielagopress.co/wp-content/uploads/2020/10/sena-1800.jpg" alt="Logo SENA" class="sena-img">
-        <h1 class="titulo-nav">Registro de Instructor</h1>
+        <h1 class="titulo-nav">Registro de Programa</h1>
     </nav>
 
     <div class="container">
         <div class="titulo-form">
-            <i class="fas fa-user-plus"></i> Registrar un nuevo Instructor
+            <i class="fas fa-book"></i> Crear Nuevo Programa
         </div>
 
         <div class="form-container">
             <form method="post" novalidate>
                 {% csrf_token %}
+                
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
 
-                <!-- Sección 1: Información Personal -->
                 <div class="form-section">
                     <h2 class="section-title">
-                        <i class="fas fa-user"></i> Información Personal
+                        <i class="fas fa-info-circle"></i> Información Básica
                     </h2>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="tipo_documento" class="required">
-                                <i class="fas fa-id-card"></i> Tipo de Documento
+                            <label for="codigo" class="required">
+                                <i class="fas fa-hashtag"></i> Código
                             </label>
-                            {{ form.tipo_documento }}
+                            {{ form.codigo }}
+                            {% if form.codigo.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.codigo.errors.0 }}
+                                </div>
+                            {% endif %}
                         </div>
                         
-                        <div class="form-group">
-                            <label for="documento_identidad">
-                                <i class="fas fa-id-card-alt"></i> Documento de Identidad
-                            </label>
-                            {{ form.documento_identidad }}
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
                         <div class="form-group">
                             <label for="nombre" class="required">
-                                <i class="fas fa-signature"></i> Nombres
+                                <i class="fas fa-font"></i> Nombre
                             </label>
                             {{ form.nombre }}
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="apellido">
-                                <i class="fas fa-signature"></i> Apellidos
-                            </label>
-                            {{ form.apellido }}
+                            {% if form.nombre.errors %}
+                                <div class="invalid-feedback">
+                                    {{ form.nombre.errors.0 }}
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="fecha_nacimiento">
-                                <i class="fas fa-birthday-cake"></i> Fecha de Nacimiento
+                            <label for="nivel_formacion" class="required">
+                                <i class="fas fa-graduation-cap"></i> Nivel de Formación
                             </label>
-                            {{ form.fecha_nacimiento }}
+                            {{ form.nivel_formacion }}
                         </div>
                         
                         <div class="form-group">
-                            <label for="telefono">
-                                <i class="fas fa-phone"></i> Teléfono
+                            <label for="modalidad" class="required">
+                                <i class="fas fa-laptop-house"></i> Modalidad
                             </label>
-                            {{ form.telefono }}
+                            {{ form.modalidad }}
                         </div>
                     </div>
                 </div>
 
-                <!-- Sección 2: Información de Contacto -->
                 <div class="form-section">
                     <h2 class="section-title">
-                        <i class="fas fa-address-book"></i> Información de Contacto
+                        <i class="fas fa-clock"></i> Duración
                     </h2>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="correo" class="required">
-                                <i class="fas fa-envelope"></i> Correo Electrónico
+                            <label for="duracion_meses" class="required">
+                                <i class="fas fa-calendar-alt"></i> Duración en Meses
                             </label>
-                            {{ form.correo }}
+                            {{ form.duracion_meses }}
                         </div>
                         
                         <div class="form-group">
-                            <label for="ciudad">
-                                <i class="fas fa-city"></i> Ciudad
+                            <label for="duracion_horas" class="required">
+                                <i class="fas fa-hourglass-half"></i> Duración en Horas
                             </label>
-                            {{ form.ciudad }}
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="direccion" class="required">
-                                <i class="fas fa-map-marked-alt"></i> Dirección
-                            </label>
-                            {{ form.direccion }}
+                            {{ form.duracion_horas }}
                         </div>
                     </div>
                 </div>
 
-                <!-- Sección 3: Información Profesional -->
                 <div class="form-section">
                     <h2 class="section-title">
-                        <i class="fas fa-graduation-cap"></i> Información Profesional
+                        <i class="fas fa-file-alt"></i> Descripción
+                    </h2>
+                    
+                    <div class="form-group">
+                        <label for="descripcion" class="required">
+                            <i class="fas fa-align-left"></i> Descripción del Programa
+                        </label>
+                        {{ form.descripcion }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="competencias" class="required">
+                            <i class="fas fa-tasks"></i> Competencias
+                        </label>
+                        {{ form.competencias }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="perfil_egreso" class="required">
+                            <i class="fas fa-user-graduate"></i> Perfil de Egreso
+                        </label>
+                        {{ form.perfil_egreso }}
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="requisitos_ingreso" class="required">
+                            <i class="fas fa-sign-in-alt"></i> Requisitos de Ingreso
+                        </label>
+                        {{ form.requisitos_ingreso }}
+                    </div>
+                </div>
+
+
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-map-marker-alt"></i> Ubicación y Estado
                     </h2>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="nivel_educativo">
-                                <i class="fas fa-user-graduate"></i> Nivel Educativo
+                            <label for="centro_formacion" class="required">
+                                <i class="fas fa-building"></i> Centro de Formación
                             </label>
-                            {{ form.nivel_educativo }}
+                            {{ form.centro_formacion }}
                         </div>
                         
                         <div class="form-group">
-                            <label for="especialidad" class="required">
-                                <i class="fas fa-tools"></i> Especialidad
+                            <label for="regional" class="required">
+                                <i class="fas fa-globe-americas"></i> Regional
                             </label>
-                            {{ form.especialidad }}
+                            {{ form.regional }}
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="años_experiencia">
-                                <i class="fas fa-briefcase"></i> Años de Experiencia
+                            <label for="estado" class="required">
+                                <i class="fas fa-toggle-on"></i> Estado
                             </label>
-                            {{ form.años_experiencia }}
+                            {{ form.estado }}
                         </div>
                     </div>
                 </div>
 
-                <!-- Sección 4: Información Laboral -->
+
                 <div class="form-section">
                     <h2 class="section-title">
-                        <i class="fas fa-briefcase"></i> Información Laboral
+                        <i class="fas fa-calendar"></i> Fechas
                     </h2>
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="activo" class="required">
-                                <i class="fas fa-toggle-on"></i> Estado Activo
+                            <label for="fecha_creacion" class="required">
+                                <i class="fas fa-calendar-plus"></i> Fecha de Creación
                             </label>
-                            {{ form.activo }}
+                            {{ form.fecha_creacion }}
                         </div>
                         
-                        <div class="form-group">
-                            <label for="fecha_vinculacion">
-                                <i class="fas fa-calendar-alt"></i> Fecha de Vinculación
-                            </label>
-                            {{ form.fecha_vinculacion }}
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
                         <div class="form-group">
                             <label for="fecha_registro" class="required">
-                                <i class="fas fa-calendar-day"></i> Fecha de Registro
+                                <i class="fas fa-calendar-check"></i> Fecha de Registro
                             </label>
                             {{ form.fecha_registro }}
                         </div>
                     </div>
                 </div>
 
-                <!-- Botones -->
+
                 <div class="buttons">
                     <a href="/" class="btn btn-secondary">
                         <i class="fas fa-times"></i> Cancelar
                     </a>
                     <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save"></i> Guardar Instructor
+                        <i class="fas fa-save"></i> Guardar Programa
                     </button>
                 </div>
             </form>

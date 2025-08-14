@@ -32,6 +32,6 @@ class ProgramaFormView(FormView):
 
         messages.success(
             self.request,
-            f"El programa {Programa.nombre} se ha creado."
+            f"El programa {programa.nombre} se ha creado."
         )
         return super().form_valid(form)
