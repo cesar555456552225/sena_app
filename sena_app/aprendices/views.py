@@ -35,7 +35,7 @@ def inicio(request):
         'total_programas' : total_programas,
     }
 
-    return HttpResponse(template.render(context. request))
+    return HttpResponse(template.render(context, request))
 
 def lista_cursos (request):
     cursos = Curso.objects.all().order_by('-fecha_inicio')
@@ -73,10 +73,10 @@ def detalle_aprendiz (request, aprendiz_id):
 
     return HttpResponse(template.render(context, request))
 
-class AprendizForm(generic.FormView):
+class AprendizCreateView(generic.FormView):
     template_name = "agregar_aprendiz.html"
     form_class = AprendizForm
-    suscess_url = '../aprendices/'
+    success_url = '../aprendices/'
 
     def form_valid(self, form):
         form.save()

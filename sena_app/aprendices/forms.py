@@ -8,7 +8,7 @@ class AprendizForm(forms.Form):
     apellido = forms.CharField(max_length=255)
     telefono = forms.CharField(max_length=15)
     correo = forms.EmailField(max_length=225)
-    fecha_nacimiento = forms.DateField(required=True)
+    fecha_nacimiento = forms.DateField( widget=forms.DateInput(attrs={'type': 'date'}))
     ciudad = forms.CharField(max_length=155)
     programa = forms.CharField(max_length=255)
 
@@ -43,12 +43,13 @@ class AprendizForm(forms.Form):
     def save(self):
         Aprendiz.objects.create(
             documento_identidad=self.cleaned_data['documento_identidad'],
-            nombre =self.cleaned_data['nombres'],
+            nombres =self.cleaned_data['nombres'],
             apellido=self.cleaned_data['apellido'],
             telefono=self.cleaned_data.get('telefono'),
             correo=self.cleaned_data.get('correo'),
             fecha_nacimiento=self.cleaned_data['fecha_nacimiento'],
-            ciudad=self.cleaned_data.get('ciudad')
+            ciudad=self.cleaned_data.get('ciudad'), 
+            programa=self.cleaned_data.get('programa')
         )
 
 #-----------------------------------------

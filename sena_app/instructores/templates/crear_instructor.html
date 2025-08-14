@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuevo Aprendiz</title>
+    <title>Nuevo Instructor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -115,56 +115,95 @@
 <body>
     <nav>
         <img src="https://www.thearchipielagopress.co/wp-content/uploads/2020/10/sena-1800.jpg" alt="" class="sena-img">
-        <div><h1 class="titulo-nav">Nuevo Aprendiz</h1></div>
+        <div><h1 class="titulo-nav">Nuevo Instructor</h1></div>
     </nav>
 <div class="container">
-    <h1 class="titulo-form">Registrar un nuevo aprendiz</h1>
+    <h1 class="titulo-form">Registrar un nuevo Instructor</h1>
 
     <form method="post" novalidate>
         {% csrf_token %}
 
-        <label>{{ form.documento_identidad.label }} <span class="text-danger">*</span></label>
-        {{ form.documento_identidad }}
+        <label>{{ form.tipo_documento.label }} <span class="text-danger">*</span></label>
+        {{ form.tipo_documento }}
 
         <div class="row">
             <div class="col">
-                <label>{{ form.nombres.label }}</label>
-                {{ form.nombres }}
+                <label>{{ form.documento_identidad.label }}</label>
+                {{ form.documento_identidad }}
             </div>
             <div class="col">
-                <label>{{ form.apellido.label }} <span class="text-danger">*</span></label>
-                {{ form.apellido }}
+                <label>{{ form.nombre.label }} <span class="text-danger">*</span></label>
+                {{ form.nombre }}
             </div>
         </div>
 
         <div class="row">
+            <div class="col">
+                <label>{{ form.apellido.label }}</label>
+                {{ form.apellido }}
+            </div>
             <div class="col">
                 <label>{{ form.telefono.label }}</label>
                 {{ form.telefono }}
             </div>
+        </div>
+
+        <div class="row">
             <div class="col">
-                <label>{{ form.correo.label }}</label>
+                <label>{{ form.correo.label }} <span class="text-danger">*</span></label>
                 {{ form.correo }}
+            </div>
+            <div class="col">
+                <label>{{ form.fecha_nacimiento.label }}</label>
+                {{ form.fecha_nacimiento }}
+            </div>
+        </div>
+
+        <label>{{ form.ciudad.label }}</label>
+        {{ form.ciudad }}
+
+        <div class="row">
+            <div class="col">
+                <label>{{ form.direccion.label }} <span class="text-danger">*</span></label>
+                {{ form.direccion }}
+            </div>
+            <div class="col">
+                <label>{{ form.nivel_educativo.label }}</label>
+                {{ form.nivel_educativo }}
+            </div>
+
+        <div class="row">
+            <div class="col">
+                <label>{{ form.especialidad.label }} <span class="text-danger">*</span></label>
+                {{ form.especialidad }}
+            </div>
+            <div class="col">
+                <label>{{ form.años_experiencia.label }}</label>
+                {{ form.años_experiencia }}
             </div>
         </div>
 
         <div class="row">
             <div class="col">
-                <label>{{ form.fecha_nacimiento.label }} <span class="text-danger">*</span></label>
-                {{ form.fecha_nacimiento }}
+                <label>{{ form.activo.label }} <span class="text-danger">*</span></label>
+                {{ form.activo }}
             </div>
             <div class="col">
-                <label>{{ form.ciudad.label }}</label>
-                {{ form.ciudad }}
+                <label>{{ form.fecha_vinculacion.label }}</label>
+                {{ form.fecha_vinculacion }}
+            </div>
+        <div class="row">
+            <div class="col">
+                <label>{{ form.fecha_registro.label }} <span class="text-danger">*</span></label>
+                {{ form.fecha_registro }}
             </div>
         </div>
-
-        <label>{{ form.programa.label }}</label>
-        {{ form.programa }}
+        </div>
+        </div>
 
         <div class="buttons">
             <a href="/" class="btn btn-secondary">Cancelar</a>
-            <button type="submit" class="btn btn-primary">Guardar Aprendiz</button>
+            <button type="submit" class="btn btn-primary">Guardar Instructor</button>
         </div>
     </form>
 
@@ -173,4 +212,3 @@
 
 </body>
 </html>
-
