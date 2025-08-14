@@ -6,6 +6,8 @@ from django.shortcuts import get_object_or_404
 from .forms import InstructorForm
 from django.views.generic import FormView
 from django.contrib import messages
+from django.urls import reverse_lazy
+from django.views import generic
 # Create your views here.
 
 def instructores(request):
@@ -22,13 +24,13 @@ def main(request):
 
 def detalle_instructor(request, instructor_id):
     instructor=get_object_or_404(Instructor, id=instructor_id)
-    cursos_coordinados = instructor.cursos_coordinados.all()
-    cursos_impartidos = instructor.cursos_impartidos.all()
+    #cursos_coordinados = instructor.cursos_coordinador.all()
+    #cursos_impartidos = instructor.cursos_impartidos.all()
     template = loader.get_template('detalle_instructor.html')
     context = {
         'instructor' : instructor,
-        'cursos_coordinados': cursos_coordinados,
-        'cursos_impartidos': cursos_impartidos,
+        #'cursos_coordinados': cursos_coordinados,
+        #'cursos_impartidos': cursos_impartidos,
     }
     return HttpResponse(template.render(context, request))
 
