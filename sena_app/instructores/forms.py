@@ -61,5 +61,4 @@ class InstructorForm(forms.Form):
             )
             return instructor
         except Exception as e:
-            raise forms.ValidationError(f"Error al crear el instructor: {str(e)}")  
-
+            raise forms.ValidationError(f"Error al crear el instructor: {str(e)}")
